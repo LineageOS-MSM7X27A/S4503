@@ -18,6 +18,7 @@
 #define BYTES_PER_BLOCK             (3)
 #define MAX_PS_LENGTH              (96)
 #define MAX_RT_LENGTH              (64)
+#define RX_STATIONS0_LEN           (15)
 
 #define XFRDAT0                    (0x20)
 #define XFRDAT1                    (0x21)
@@ -52,7 +53,7 @@
 #define SRCH_MASK                  (1 << SRCH200KHZ_OFFSET)
 
 /* Standard buffer size */
-#define STD_BUF_SIZE               (128)
+#define STD_BUF_SIZE               (256)
 /* Search direction */
 #define SRCH_DIR_UP                 (0)
 #define SRCH_DIR_DOWN               (1)

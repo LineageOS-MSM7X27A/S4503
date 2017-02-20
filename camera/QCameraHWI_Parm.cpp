@@ -3368,7 +3368,7 @@ status_t QCameraHardwareInterface::setCaptureBurstExp()
     char burst_exp[PROPERTY_VALUE_MAX];
     memset(burst_exp, 0, sizeof(burst_exp));
     property_get("persist.capture.burst.exposures", burst_exp, "");
-    if (NULL != burst_exp)
+    if (!burst_exp[0])
       mParameters.set("capture-burst-exposures", burst_exp);
     return NO_ERROR;
 }
@@ -4171,14 +4171,14 @@ void QCameraHardwareInterface::addExifTag(exif_tag_id_t tagid, exif_tag_type_t t
     mExifTableNumEntries++;
 }
 
-rat_t getRational(int num, int denom)
+rat_t getRational(uint32_t num, uint32_t denom)
 {
     rat_t temp = {num, denom};
     return temp;
 }
 
 void QCameraHardwareInterface::initExifData(){
-    if(mExifValues.dateTime) {
+    if(true) {
         addExifTag(EXIFTAGID_EXIF_DATE_TIME_ORIGINAL, EXIF_ASCII,
                   20, 1, (void *)mExifValues.dateTime);
     }
@@ -4194,7 +4194,7 @@ void QCameraHardwareInterface::initExifData(){
     if(mExifValues.mLatitude) {
         addExifTag(EXIFTAGID_GPS_LATITUDE, EXIF_RATIONAL, 3, 1, (void *)mExifValues.latitude);
 
-        if(mExifValues.latRef) {
+        if(true) {
             addExifTag(EXIFTAGID_GPS_LATITUDE_REF, EXIF_ASCII, 2,
                                     1, (void *)mExifValues.latRef);
         }
@@ -4203,7 +4203,7 @@ void QCameraHardwareInterface::initExifData(){
     if(mExifValues.mLongitude) {
         addExifTag(EXIFTAGID_GPS_LONGITUDE, EXIF_RATIONAL, 3, 1, (void *)mExifValues.longitude);
 
-        if(mExifValues.lonRef) {
+        if(true) {
             addExifTag(EXIFTAGID_GPS_LONGITUDE_REF, EXIF_ASCII, 2,
                                 1, (void *)mExifValues.lonRef);
         }
